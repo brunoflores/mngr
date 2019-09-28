@@ -5,8 +5,11 @@ rust:
   - nightly
 matrix:
   allow_failures:
-    - rust: nightly
+    - rust: stable
+    - rust: beta
   fast_finish: true
 script:
   - cargo install cargo-xbuild
+  - rustup component add rust-src
+  - rustup component add llvm-tools-preview
   - cargo xtest
