@@ -21,3 +21,4 @@ cargo bootimage
 * https://wiki.osdev.org/Multiboot
 * https://en.wikipedia.org/wiki/GNU_GRUB
 * https://en.wikipedia.org/wiki/Executable_and_Linkable_Format
+* https://en.wikipedia.org/wiki/Volatile_(computer_programming)
