@@ -2,7 +2,7 @@
 
 ```bash
 cargo install cargo-xbuild
-cargo xbuild --target x86_64-mngr.json
+cargo xbuild
 ```
 
 ## Reading
