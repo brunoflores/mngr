@@ -2,7 +2,9 @@
 
 ```bash
 cargo install cargo-xbuild
-cargo xbuild
+cargo install bootimage --version "^0.7.7"
+rustup component add llvm-tools-preview
+cargo bootimage
 ```
 
 ## Reading
@@ -18,3 +20,4 @@ cargo xbuild
 * https://en.wikipedia.org/wiki/Long_mode
 * https://wiki.osdev.org/Multiboot
 * https://en.wikipedia.org/wiki/GNU_GRUB
+* https://en.wikipedia.org/wiki/Executable_and_Linkable_Format
