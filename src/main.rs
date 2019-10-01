@@ -17,7 +17,6 @@ pub extern "C" fn _start() -> ! {
     test_main();
 
     println!("It did not crash!");
-
     mngr::hlt_loop();
 }
 
