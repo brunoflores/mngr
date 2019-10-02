@@ -4,6 +4,9 @@
 #![test_runner(mngr::test_runner)]
 #![reexport_test_harness_main = "test_main"]
 
+extern crate alloc;
+
+use alloc::boxed::Box;
 use bootloader::{entry_point, BootInfo};
 use core::panic::PanicInfo;
 use mngr::println;
@@ -28,6 +31,8 @@ fn kernel_main(boot_info: &'static BootInfo) -> ! {
 
     let page_ptr: *mut u64 = page.start_address().as_mut_ptr();
     unsafe { page_ptr.offset(400).write_volatile(0x_f021_f077_f065_f04e) };
+
+    let x = Box::new(42);
 
     #[cfg(test)]
     test_main();
