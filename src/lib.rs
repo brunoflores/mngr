@@ -9,6 +9,7 @@
 extern crate alloc;
 
 use core::panic::PanicInfo;
+use linked_list_allocator::LockedHeap;
 
 #[cfg(test)]
 use bootloader::{entry_point, BootInfo};
@@ -21,7 +22,7 @@ pub mod serial;
 pub mod vga_buffer;
 
 #[global_allocator]
-static ALLOCATOR: allocator::Dummy = allocator::Dummy;
+static ALLOCATOR: LockedHeap = LockedHeap::empty();
 
 #[alloc_error_handler]
 fn alloc_error_handler(layout: alloc::alloc::Layout) -> ! {
