@@ -53,3 +53,13 @@ fn large_vec() {
     assert_eq!(vec.iter().sum::<u64>(), (n - 1) * n / 2);
     serial_println!("[ok]");
 }
+
+#[test_case]
+fn many_boxes() {
+    serial_print!("many_boxes...");
+    for i in 0..10_000 {
+        let x = Box::new(i);
+        assert_eq!(*x, i);
+    }
+    serial_println!("[ok]");
+}
