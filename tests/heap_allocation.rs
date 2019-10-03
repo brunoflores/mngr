@@ -6,7 +6,7 @@
 
 extern crate alloc;
 
-use alloc::boxed::Box;
+use alloc::{boxed::Box, vec::Vec};
 use bootloader::{entry_point, BootInfo};
 use core::panic::PanicInfo;
 use mngr::{serial_print, serial_println};
@@ -39,5 +39,17 @@ fn simple_allocation() {
     serial_print!("simple_allocation...");
     let heap_value = Box::new(42);
     assert_eq!(*heap_value, 42);
+    serial_println!("[ok]");
+}
+
+#[test_case]
+fn large_vec() {
+    serial_print!("large_vec...");
+    let n = 1000;
+    let mut vec = Vec::new();
+    for i in 0..n {
+        vec.push(i);
+    }
+    assert_eq!(vec.iter().sum::<u64>(), (n - 1) * n / 2);
     serial_println!("[ok]");
 }
