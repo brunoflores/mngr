@@ -6,8 +6,10 @@
 
 extern crate alloc;
 
+use alloc::boxed::Box;
 use bootloader::{entry_point, BootInfo};
 use core::panic::PanicInfo;
+use mngr::{serial_print, serial_println};
 
 entry_point!(main);
 
@@ -30,4 +32,12 @@ fn main(boot_info: &'static BootInfo) -> ! {
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
     mngr::test_panic_handler(info);
+}
+
+#[test_case]
+fn simple_allocation() {
+    serial_print!("simple_allocation...");
+    let heap_value = Box::new(42);
+    assert_eq!(*heap_value, 42);
+    serial_println!("[ok]");
 }
